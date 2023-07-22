@@ -21,6 +21,14 @@ html, body {
   @apply h-screen w-screen bg-purple-dark overflow-x-hidden
 }
 
+.button-curriculum {
+  box-shadow: 0 0 101px 0 rgba(40,206,124,0.5);
+}
+
+.button-curriculum:hover {
+  box-shadow: 0px 28px 44px -17px #28ce7c;
+}
+
 .code {
   position: relative;
 }

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Typical from 'react-typical';
 
 import { Code } from "./Code";
+import { Button } from "./Button";
 
 function TitleHighlighted() {
   return(
@@ -40,6 +41,9 @@ export function Main() {
           width={600}
           alt="Main Section"
         />
+        <div className="w-full h-full flex justify-center mt-32">
+          <Button />
+        </div>
       </div>
     </main>
   )
