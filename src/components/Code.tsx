@@ -33,6 +33,7 @@ export function Code() {
       console.error('Failed to copy text: ', err);
     }
   };
+  
   return(
     <div className="code min-h-[250px] w-[80%] m-auto md:m-0 md:w-[400px] bg-purple-dark border-solid border-[1px] border-purple-900 rounded-2xl">
       <header className="w-full flex flex-row justify-between py-2 px-2">

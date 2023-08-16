@@ -66,6 +66,12 @@ html, body {
   padding: 5px;
   font-size: 12px;
   white-space: nowrap;
+
+  @media (max-width: 600px) {
+    left: auto;
+    right: 2%;
+    top: -10%;
+  }
 }
 
 #copy-button:hover + #copy-tooltip {
