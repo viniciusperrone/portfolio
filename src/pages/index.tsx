@@ -4,6 +4,7 @@ import { Header } from "../components/Header";
 import { LoadingPage } from "../components/Loading";
 import { Main } from "../components/Main";
 import { Skills } from "../components/Skills";
+import { Contact } from "@/components/Contact";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -27,6 +28,7 @@ export default function Home() {
             <Header />
             <Main />
             <Skills />
+            <Contact />
           </>
         )
       }
