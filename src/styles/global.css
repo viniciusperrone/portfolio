@@ -74,6 +74,22 @@ html, body {
   }
 }
 
+.remove-visual-scrollbar::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.remove-visual-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.remove-visual-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.remove-visual-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 #copy-button:hover + #copy-tooltip {
   display: inline-block;
 }
