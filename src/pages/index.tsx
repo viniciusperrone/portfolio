@@ -6,6 +6,7 @@ import { Main } from "../components/Main";
 import { Skills } from "../components/Skills";
 import { Contact } from "@/components/Contact";
 import { Projects } from "@/components/Projects";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -31,6 +32,7 @@ export default function Home() {
             <Skills />
             <Projects />
             <Contact />
+            <Footer />
           </>
         )
       }
