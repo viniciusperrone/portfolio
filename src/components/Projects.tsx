@@ -49,7 +49,9 @@ function CardProject(props: ProjectProps) {
       </main>
       <footer className="flex flex-row items-center justify-between mt-2 px-2">
         <h3 className="text-base font-inter font-semibold text-white">2022</h3>
-        {icon}
+        <a href={props.href} target="_blank">
+          {icon}
+        </a>
       </footer>
     </div>
   )
@@ -87,7 +89,7 @@ export function Projects() {
       </div>
       <div className="w-full flex flex-col">
         <div 
-          className="remove-visual-scrollbar flex flex-row gap-8 pt-10 pb-20 px-16 overflow-x-scroll"
+          className="remove-visual-scrollbar flex flex-row gap-8 py-20 px-16 overflow-x-scroll"
           onScroll={e => {
             const element = e.currentTarget;
             const scrollPosition = element.scrollLeft;

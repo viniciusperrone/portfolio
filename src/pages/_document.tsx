@@ -10,6 +10,7 @@ export default class MyDocument extends Document {
         <Head>
           <Link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
           <Script defer src="https://pyscript.net/latest/pyscript.js"></Script>
+          <Link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         </Head>
         <body>
           <Main />

@@ -27,11 +27,12 @@ export const projetcs: ProjectProps[] = [
     image: '/images/ubemath.png',
     categories: ['All projects', 'React.js', 'Node.js'],
     year: '2022',
-    href: '',
+    href: 'https://ubemath.netlify.app',
     icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
     style: {
       background: "linear-gradient(45deg, rgba(139,92,246,1) 40%, rgba(249,168,211,1) 80%, rgba(249,168,211,1) 100%)",
-      transform: "rotate(5deg)"
+      transform: "rotate(5deg)",
+      boxShadow: `0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 50px rgba(0, 0, 0, 0.1), 0 0 20px #f9a8d3, 0 0 40px #f9a8d3`
     }
   },
   {
@@ -45,11 +46,11 @@ export const projetcs: ProjectProps[] = [
     image: '/images/ubemath.png',
     categories: ['All projects', 'React.js', 'Node.js'],
     year: '2022',
-    href: '',
+    href: 'https://ubemath.netlify.app',
     icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
     style: {
       background: "linear-gradient(45deg, rgba(139,92,246,1) 40%, rgba(249,168,211,1) 80%, rgba(249,168,211,1) 100%)",
-      transform: "rotate(5deg)"
+      boxShadow: `0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 50px rgba(0, 0, 0, 0.1), 0 0 20px #f9a8d3, 0 0 40px #f9a8d3`
     }
   },
   {
@@ -63,11 +64,12 @@ export const projetcs: ProjectProps[] = [
     image: "images/ubemath.png",
     categories: ['All projects', 'React.js', 'Node.js'],
     year: '2022',
-    href: '',
+    href: 'https://ubemath.netlify.app',
     icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
     style: {
       background: "linear-gradient(45deg, rgba(139,92,246,1) 40%, rgba(249,168,211,1) 80%, rgba(249,168,211,1) 100%)",
-      transform: "rotate(5deg)"
+      transform: "rotate(-1deg)",
+      boxShadow: `0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 50px rgba(0, 0, 0, 0.1), 0 0 20px #f9a8d3, 0 0 40px #f9a8d3`
     }
   },
   {
@@ -81,11 +83,12 @@ export const projetcs: ProjectProps[] = [
     image: 'images/ubemath.png',
     categories: ['All projects', 'React.js', 'Node.js'],
     year: '2022',
-    href: '',
+    href: 'https://ubemath.netlify.app',
     icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
     style: {
       background: "linear-gradient(45deg, rgba(139,92,246,1) 40%, rgba(249,168,211,1) 80%, rgba(249,168,211,1) 100%)",
-      transform: "rotate(5deg)"
+      boxShadow: `0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 50px rgba(0, 0, 0, 0.1), 0 0 20px #f9a8d3, 0 0 40px #f9a8d3`,
+      transform: "rotate(-5deg)"
     }
   },
   {
@@ -99,11 +102,11 @@ export const projetcs: ProjectProps[] = [
     image: "images/ubemath.png",
     categories: ['All projects', 'React.js', 'Node.js'],
     year: '2022',
-    href: '',
+    href: 'https://ubemath.netlify.app',
     icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
     style: {
       background: "linear-gradient(45deg, rgba(139,92,246,1) 40%, rgba(249,168,211,1) 80%, rgba(249,168,211,1) 100%)",
-      transform: "rotate(5deg)"
+      boxShadow: `0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 50px rgba(0, 0, 0, 0.1), 0 0 20px #f9a8d3, 0 0 40px #f9a8d3`
     }
   }
 ];
