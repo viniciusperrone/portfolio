@@ -2,7 +2,7 @@ import { useState, HTMLAttributes } from 'react';
 
 import { BsArrowRight } from "react-icons/bs";
 import { AiOutlineLink } from "react-icons/ai"
-import { ProjectProps, projetcs } from '@/mock/projects';
+import { ProjectProps, projects } from '@/mock/projects';
 
 const categoryProjects = ['All projects', 'Next.js', 'React.js', 'Node.js', 'React Native', 'Django'];
 
@@ -48,7 +48,7 @@ function CardProject(props: ProjectProps) {
         </p>
       </main>
       <footer className="flex flex-row items-center justify-between mt-2 px-2">
-        <h3 className="text-base font-inter font-semibold text-white">2022</h3>
+        <h3 className="text-base font-inter font-semibold text-white">{props.year}</h3>
         <a href={props.href} target="_blank">
           {icon}
         </a>
@@ -102,7 +102,11 @@ export function Projects() {
           }}
         >
           {
-            projetcs.map(project => <CardProject key={project.id} {...project}/>)
+            projects.map(project => (
+              <div onClick={() => setCategorySelected(project?.title)}>
+                <CardProject key={project.id} {...project}/>
+              </div> 
+              ))
           }
         </div>
       </div>

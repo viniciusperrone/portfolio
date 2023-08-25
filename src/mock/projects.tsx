@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { AiOutlineLink } from "react-icons/ai";
+import { AiFillGithub, AiOutlineLink } from "react-icons/ai";
 
 export type ProjectProps = {
   id: number;
@@ -15,7 +15,7 @@ export type ProjectProps = {
 
 export const categoryProjects = ['All projects', 'Next.js', 'React.js', 'Node.js', 'React Native', 'Django'];
 
-export const projetcs: ProjectProps[] = [
+export const projects = [
   {
     id: 0,
     title: 'UBEMath',
@@ -26,7 +26,7 @@ export const projetcs: ProjectProps[] = [
     `,
     image: '/images/ubemath.png',
     categories: ['All projects', 'React.js', 'Node.js'],
-    year: '2022',
+    year: '2020',
     href: 'https://ubemath.netlify.app',
     icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
     style: {
@@ -37,7 +37,7 @@ export const projetcs: ProjectProps[] = [
   },
   {
     id: 1,
-    title: 'UBEMath',
+    title: 'FoodFast',
     description: `
       The UBEMath project is a solution for Math difficulties suffered
       by 9th-grade students, it consists of a web platform and a 2D
@@ -45,9 +45,9 @@ export const projetcs: ProjectProps[] = [
     `,
     image: '/images/ubemath.png',
     categories: ['All projects', 'React.js', 'Node.js'],
-    year: '2022',
-    href: 'https://ubemath.netlify.app',
-    icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
+    year: '2021',
+    href: 'https://github.com/viniciusperrone/FoodFast',
+    icon: <AiFillGithub size={22} color="#FFFFFF"/>,
     style: {
       background: "linear-gradient(45deg, rgba(139,92,246,1) 40%, rgba(249,168,211,1) 80%, rgba(249,168,211,1) 100%)",
       boxShadow: `0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 50px rgba(0, 0, 0, 0.1), 0 0 20px #f9a8d3, 0 0 40px #f9a8d3`
@@ -55,7 +55,7 @@ export const projetcs: ProjectProps[] = [
   },
   {
     id: 2,
-    title: 'UBEMath',
+    title: 'Ignite Lab',
     description: `
       The UBEMath project is a solution for Math difficulties suffered
       by 9th-grade students, it consists of a web platform and a 2D
@@ -64,7 +64,7 @@ export const projetcs: ProjectProps[] = [
     image: "images/ubemath.png",
     categories: ['All projects', 'React.js', 'Node.js'],
     year: '2022',
-    href: 'https://ubemath.netlify.app',
+    href: 'https://ignite-lab-sigma-lovat.vercel.app/',
     icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
     style: {
       background: "linear-gradient(45deg, rgba(139,92,246,1) 40%, rgba(249,168,211,1) 80%, rgba(249,168,211,1) 100%)",
@@ -74,7 +74,7 @@ export const projetcs: ProjectProps[] = [
   },
   {
     id: 3,
-    title: 'UBEMath',
+    title: 'Rocket Help',
     description: `
       The UBEMath project is a solution for Math difficulties suffered
       by 9th-grade students, it consists of a web platform and a 2D
@@ -83,8 +83,8 @@ export const projetcs: ProjectProps[] = [
     image: 'images/ubemath.png',
     categories: ['All projects', 'React.js', 'Node.js'],
     year: '2022',
-    href: 'https://ubemath.netlify.app',
-    icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
+    href: 'https://github.com/viniciusperrone/Rocket-Help',
+    icon: <AiFillGithub size={20} color="#FFFFFF"/>,
     style: {
       background: "linear-gradient(45deg, rgba(139,92,246,1) 40%, rgba(249,168,211,1) 80%, rgba(249,168,211,1) 100%)",
       boxShadow: `0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 50px rgba(0, 0, 0, 0.1), 0 0 20px #f9a8d3, 0 0 40px #f9a8d3`,
@@ -93,7 +93,7 @@ export const projetcs: ProjectProps[] = [
   },
   {
     id: 4,
-    title: 'UBEMath',
+    title: 'Klutch-Tech',
     description: `
       The UBEMath project is a solution for Math difficulties suffered
       by 9th-grade students, it consists of a web platform and a 2D
@@ -102,7 +102,7 @@ export const projetcs: ProjectProps[] = [
     image: "images/ubemath.png",
     categories: ['All projects', 'React.js', 'Node.js'],
     year: '2022',
-    href: 'https://ubemath.netlify.app',
+    href: 'https://klutch-tech.vercel.app',
     icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
     style: {
       background: "linear-gradient(45deg, rgba(139,92,246,1) 40%, rgba(249,168,211,1) 80%, rgba(249,168,211,1) 100%)",
