@@ -5,7 +5,7 @@ import { Tech } from './Tech';
 export function Skills() {
 
   return(
-    <div className="flex flex-col md:px-16 my-8 md:my-16">
+    <div id="skills" className="flex flex-col md:px-16 my-8 md:my-16">
       <div className="flex flex-col px-5">
         <span className="text-xl text-[#0EA5E9] font-inter font-semibold flex flex-row items-center gap-2">
           <BsArrowRight 

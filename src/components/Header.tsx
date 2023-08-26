@@ -5,6 +5,17 @@ import { RiMenu4Line } from "react-icons/ri";
 import { ToggleTheme } from "./ToggleTheme";
 
 export function Header() {
+  function onClickAnchorRef(id: string) {
+    const sectionRef = document.getElementById(id);
+
+    if(!sectionRef) return;
+
+    sectionRef.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+
   return(
     <header className="w-full h-20 border-solid border-b-2 border-purple-900 flex flex-row justify-between items-center px-8 md:px-20">
       <Logo />
@@ -13,7 +24,8 @@ export function Header() {
           <li>
             <a 
               className="anchor-nav relative font-inter font-medium text-gray-default text-base"
-              href="/sobre"
+              // href="/sobre"
+              onClick={() => onClickAnchorRef("about")}
             >
               Sobre
             </a>
@@ -21,7 +33,8 @@ export function Header() {
           <li>
             <a 
               className="anchor-nav relative font-inter font-medium text-gray-default text-base"
-              href="/habilidades"
+              // href="/habilidades"
+              onClick={() => onClickAnchorRef("skills")}
             >
               Habilidades
             </a>
@@ -29,15 +42,17 @@ export function Header() {
           <li>
             <a 
               className="anchor-nav relative font-inter font-medium text-gray-default text-base"
-              href="/projetos"
+              // href="/projetos"
+              onClick={() => onClickAnchorRef("projects")}
             >
               Projetos
             </a>
           </li>
           <li>
-            <a 
+            <a
               className="anchor-nav relative font-inter font-medium text-gray-default text-base"
-              href="/contato"
+              // href="/contato"
+              onClick={() => onClickAnchorRef("contact")}
             >
               Contato
             </a>

@@ -21,7 +21,7 @@ function TitleHighlighted({ extraClasses }: any) {
 
 export function Main() {
   return(
-    <main className="w-full min-h-[calc(100vh-80px)] flex flex-col-reverse md:flex-row">
+    <main id="about" className="w-full min-h-[calc(100vh-80px)] flex flex-col-reverse md:flex-row">
       <div className="w-full min-h-full flex flex-col md:justify-center md:pl-16 gap-10 md:gap-20 pt-10 md:pt-32 pb-10">
         <TitleHighlighted extraClasses="h-24 hidden md:block" />
         <p className="font-open text-lg text-gray-400 max-w-[90%] m-auto md:m-0 md:max-w-[60%] text-justify">
