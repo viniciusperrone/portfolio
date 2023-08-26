@@ -7,6 +7,7 @@ import { Skills } from "../components/Skills";
 import { Contact } from "@/components/Contact";
 import { Projects } from "@/components/Projects";
 import { Footer } from "@/components/Footer";
+import { FavButton } from "@/components/FavButton";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -33,6 +34,7 @@ export default function Home() {
             <Projects />
             <Contact />
             <Footer />
+            <FavButton />
           </>
         )
       }
