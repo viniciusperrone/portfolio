@@ -33,7 +33,7 @@ function CardProject(props: ProjectProps) {
   const icon = props?.icon || <AiOutlineLink size={20} color="#FFFFFF" />;
   return(
     <div 
-      className="p-3 min-w-[350px] min-h-[350px] rounded-[12px]"
+      className="p-3 min-w-[350px] max-w-[350px] min-h-[400px] max-h-[400px] rounded-[12px]"
       style={props?.style}
     >
       <img 
@@ -59,6 +59,7 @@ function CardProject(props: ProjectProps) {
 
 export function Projects() {
   const [categorySelected, setCategorySelected] = useState<string>('All projects');
+  const projectsByCategory = projects.filter(project => project.categories.includes(categorySelected));
 
   return(
     <div 
@@ -81,7 +82,8 @@ export function Projects() {
               <Pill 
                 key={index} 
                 category={category} 
-                isSelected={category===categorySelected} 
+                isSelected={category===categorySelected}
+                onClick={() => setCategorySelected(category)}
               />
             ))
           }
@@ -102,11 +104,7 @@ export function Projects() {
           }}
         >
           {
-            projects.map(project => (
-              <div onClick={() => setCategorySelected(project?.title)}>
-                <CardProject key={project.id} {...project}/>
-              </div> 
-              ))
+            projectsByCategory.map(project => <CardProject key={project.id} {...project} />)
           }
         </div>
       </div>

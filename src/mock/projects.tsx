@@ -44,7 +44,7 @@ export const projects = [
       game developed for the "TCC" at Fundação Matias Machline (FMM)
     `,
     image: '/images/ubemath.png',
-    categories: ['All projects', 'React.js', 'Node.js'],
+    categories: ['All projects', 'React Native', 'Node.js'],
     year: '2021',
     href: 'https://github.com/viniciusperrone/FoodFast',
     icon: <AiFillGithub size={22} color="#FFFFFF"/>,
@@ -62,7 +62,7 @@ export const projects = [
       game developed for the "TCC" at Fundação Matias Machline (FMM)
     `,
     image: "images/ubemath.png",
-    categories: ['All projects', 'React.js', 'Node.js'],
+    categories: ['All projects', 'React.js'],
     year: '2022',
     href: 'https://ignite-lab-sigma-lovat.vercel.app/',
     icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
@@ -81,7 +81,7 @@ export const projects = [
       game developed for the "TCC" at Fundação Matias Machline (FMM)
     `,
     image: 'images/ubemath.png',
-    categories: ['All projects', 'React.js', 'Node.js'],
+    categories: ['All projects', 'React Native', 'React Native', 'Node.js'],
     year: '2022',
     href: 'https://github.com/viniciusperrone/Rocket-Help',
     icon: <AiFillGithub size={20} color="#FFFFFF"/>,
@@ -100,7 +100,7 @@ export const projects = [
       game developed for the "TCC" at Fundação Matias Machline (FMM)
     `,
     image: "images/ubemath.png",
-    categories: ['All projects', 'React.js', 'Node.js'],
+    categories: ['All projects', 'Next.js', 'React.js', 'Django'],
     year: '2022',
     href: 'https://klutch-tech.vercel.app',
     icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
