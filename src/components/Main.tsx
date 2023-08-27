@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Typical from 'react-typical';
+import { BsArrow90DegLeft } from "react-icons/bs";
 
 import { Code } from "./Code";
 import { Button } from "./Button";
@@ -30,7 +31,7 @@ export function Main() {
           para desktop e mobile, sempre estou aberto a 
           aprender coisas novas. Busco sempre desenvolver
           as melhores soluções, prezando uma boa dinâmica e
-          a flexibilidade as necessidades dos usuários.
+          a flexibilidade nas necessidades dos usuários.
         </p>
         <Code />
       </div>

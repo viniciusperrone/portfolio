@@ -8,9 +8,11 @@ import { Contact } from "@/components/Contact";
 import { Projects } from "@/components/Projects";
 import { Footer } from "@/components/Footer";
 import { FavButton } from "@/components/FavButton";
+import { Drawer } from "@/components/Drawer";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
+  const [drawer, setDrawer] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);
@@ -28,7 +30,8 @@ export default function Home() {
       {
         !loading && (
           <>
-            <Header />
+            <Drawer open={drawer} onClose={() => setDrawer(false)}/>
+            <Header onOpen={() => setDrawer(true)}/>
             <Main />
             <Skills />
             <Projects />

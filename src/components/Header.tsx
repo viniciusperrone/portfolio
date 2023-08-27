@@ -3,8 +3,10 @@ import Image from "next/image";
 import { Logo } from "../assets/images/Logo";
 import { RiMenu4Line } from "react-icons/ri";
 import { ToggleTheme } from "./ToggleTheme";
+import { DrawerProps as HeaderProps } from "./Drawer";
 
-export function Header() {
+
+export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
   function onClickAnchorRef(id: string) {
     const sectionRef = document.getElementById(id);
 
@@ -71,6 +73,7 @@ export function Header() {
         <RiMenu4Line
           color="#FBFBFB"
           className="h-6 w-6 block cursor-pointer md:hidden"
+          onClick={onOpen}
         />
       </div>
     </header>
