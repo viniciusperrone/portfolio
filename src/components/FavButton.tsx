@@ -6,7 +6,7 @@ export function FavButton() {
     const message = encodeURIComponent('Olá, podemos conversar?');
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
 
-    window.open(whatsappUrl, "_blank")
+    window.open(whatsappUrl, "_blank");
   };
 
   return (

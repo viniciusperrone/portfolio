@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { BsArrow90DegLeft, BsWhatsapp } from "react-icons/bs";
 import { AddressBook, Book, BracketsAngle, Hammer } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSendMessage } from "@/hooks/useSendMessage";
 
 export type DrawerProps = {
   open: boolean;
@@ -38,6 +39,8 @@ const listAnchor = [
 ];
 
 export function Drawer({ open, onClose }: Omit<DrawerProps, 'onOpen'>) {
+  const { sendMessage } = useSendMessage();
+  
   function onSelectSection(id: string) {
     onClose();
 
@@ -79,7 +82,8 @@ export function Drawer({ open, onClose }: Omit<DrawerProps, 'onOpen'>) {
           {
             listAnchor.map(item => {
               return (
-                <span 
+                <span
+                  key={item.id}
                   className="flex flex-row gap-5"
                   onClick={() => onSelectSection(item.anchor)}
                 >
@@ -92,7 +96,10 @@ export function Drawer({ open, onClose }: Omit<DrawerProps, 'onOpen'>) {
             })
           }
         </ol>
-        <button className="w-full my-10 self-end rounded-lg bg-[#2EDC6D] h-12 flex justify-between items-center px-5 text-lg font-inter font-semibold text-white">
+        <button 
+          className="w-full my-10 self-end rounded-lg bg-[#2EDC6D] h-12 flex justify-between items-center px-5 text-lg font-inter font-semibold text-white"
+          onClick={sendMessage}
+        >
           <BsWhatsapp
             color="white"
             size={30}
