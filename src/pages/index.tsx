@@ -14,33 +14,33 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
   const [drawer, setDrawer] = useState<boolean>(false);
 
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1200);
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 1200);
+  // }, []);
   
   return(
     <>
       <Head>
         <title>Vinicius Perrone | Full Stack Developer</title>
       </Head>
-      { loading && <LoadingPage /> }
-      {
-        !loading && (
-          <>
-            <Drawer open={drawer} onClose={() => setDrawer(false)}/>
-            <Header onOpen={() => setDrawer(true)}/>
-            <Main />
-            <Skills />
-            <Projects />
-            <Contact />
-            <Footer />
-            <FavButton />
-          </>
-        )
-      }
+      {/* { loading && <LoadingPage /> } */}
+      {/* {
+        !loading && ( */}
+        <>
+          <Drawer open={drawer} onClose={() => setDrawer(false)}/>
+          <Header onOpen={() => setDrawer(true)}/>
+          <Main />
+          <Skills />
+          <Projects />
+          <Contact />
+          <Footer />
+          <FavButton />
+        </>
+        {/* ) */}
+      {/* } */}
     </>
   )
 }
