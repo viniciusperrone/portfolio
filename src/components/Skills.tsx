@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { BsArrowRight } from 'react-icons/bs';
 import { techs } from '../mock/skills';
 import { Tech } from './Tech';
@@ -17,13 +18,21 @@ export function Skills() {
           Technologies I used
         </h1>
       </div>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 px-10'>
-        {techs.map((tech) => (
-          <Tech 
-            key={tech.name}
-            icon={tech.icon}
-          />
-        ))}
+      <div className='flex flex-row flex-wrap items-center justify-center md:grid md:grid-cols-2 lg:grid-cols-5 gap-5 px-10'>
+        {techs.map((tech) => {
+          return (
+            <Fragment>
+              <Tech 
+                key={tech.name}
+                icon={tech.icon}
+                extraClasses="hidden md:flex"
+              />
+              <div className="md:hidden">
+                {tech.icon}
+              </div>
+            </Fragment>
+          )
+        })}
       </div>
     </div>
   )
