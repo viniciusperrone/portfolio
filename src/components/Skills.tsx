@@ -2,8 +2,10 @@ import { Fragment } from "react";
 import { BsArrowRight } from 'react-icons/bs';
 import { techs } from '../mock/skills';
 import { Tech } from './Tech';
+import { useLanguage } from "@/hooks/useLanguage";
 
 export function Skills() {
+  const { selectedLanguage } = useLanguage();
 
   return(
     <div id="skills" className="flex flex-col md:px-16 my-8 md:my-16">
@@ -12,10 +14,10 @@ export function Skills() {
           <BsArrowRight 
             color="#0EA5E9"
           />
-          Skills
+          {selectedLanguage === 'en' ? 'Skills' : 'Habilidades'}
         </span>
         <h1 className="text-3xl md:text-5xl font-inter font-extrabold text-white h-24 max-w-[500px]">
-          Technologies I used
+          {selectedLanguage === 'en' ? 'Technologies I used': 'Tecnologias que uso'}
         </h1>
       </div>
       <div className='flex flex-row flex-wrap items-center justify-center md:grid md:grid-cols-2 lg:grid-cols-5 gap-5 px-10'>
