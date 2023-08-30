@@ -12,6 +12,7 @@ interface LanguageContextData {
   setSelectedLanguage: Dispatch<SetStateAction< 'pt' | 'en'>>;
   onChangeToPortuguese: () => void;
   onChangeToEnglish: () => void;
+  onChangeLanguage: () => void;
 }
 
 type ProviderProps = {
@@ -27,13 +28,24 @@ function LanguageProvider({ children }: ProviderProps) {
 
   const onChangeToEnglish = () => setSelectedLanguage('en');
 
+  const onChangeLanguage = () => {
+    if(selectedLanguage === 'pt') {
+      setSelectedLanguage('en');
+
+      return;
+    }
+
+    setSelectedLanguage('pt');
+  }
+
   return(
     <LanguageContext.Provider
       value={{
         selectedLanguage,
         setSelectedLanguage,
         onChangeToPortuguese,
-        onChangeToEnglish
+        onChangeToEnglish,
+        onChangeLanguage
       }}
     >
       {children}

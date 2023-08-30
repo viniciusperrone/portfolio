@@ -4,9 +4,16 @@ import { Logo } from "../assets/images/Logo";
 import { RiMenu4Line } from "react-icons/ri";
 import { ToggleTheme } from "./ToggleTheme";
 import { DrawerProps as HeaderProps } from "./Drawer";
+import { useLanguage } from "@/hooks/useLanguage";
 
+const HREF_PT = '/images/brasil-icon.svg';
+const HREF_EN = '/images/estados-unidos-icon.svg';
 
 export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
+  const { selectedLanguage, onChangeLanguage } = useLanguage();
+
+  const countryLanguage = selectedLanguage === 'pt' ? HREF_PT : HREF_EN;
+
   function onClickAnchorRef(id: string) {
     const sectionRef = document.getElementById(id);
 
@@ -64,11 +71,12 @@ export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
       <div className="flex flex-row justify-center items-center gap-4">
         <ToggleTheme />
         <Image 
-          src="/images/brasil-icon.svg"
+          src={countryLanguage}
           height={30}
           width={30}
-          alt="brazilian language"
+          alt={`${selectedLanguage} language`}
           className="cursor-pointer"
+          onClick={onChangeLanguage}
         />
         <RiMenu4Line
           color="#FBFBFB"
