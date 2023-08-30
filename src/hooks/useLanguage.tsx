@@ -1,5 +1,6 @@
 import { 
   useState, 
+  useEffect,
   useContext, 
   createContext, 
   Dispatch, 
@@ -24,19 +25,36 @@ const LanguageContext = createContext({} as LanguageContextData);
 function LanguageProvider({ children }: ProviderProps) {
   const [selectedLanguage, setSelectedLanguage] = useState<'pt' | 'en'>('pt');
 
-  const onChangeToPortuguese = () => setSelectedLanguage('pt');
+  const onChangeToPortuguese = () => {
+    setSelectedLanguage('pt');
+    localStorage.setItem('language', 'pt');
+  };
 
-  const onChangeToEnglish = () => setSelectedLanguage('en');
+  const onChangeToEnglish = () => {
+    setSelectedLanguage('en')
+    localStorage.setItem('language', 'en');
+  };
 
   const onChangeLanguage = () => {
     if(selectedLanguage === 'pt') {
       setSelectedLanguage('en');
+      localStorage.setItem('language', 'en');
 
       return;
     }
 
+    localStorage.setItem('language', 'en');
     setSelectedLanguage('pt');
   }
+
+  useEffect(() => {
+    const storeData = localStorage.getItem('language');
+
+    if(storeData) {
+      setSelectedLanguage(storeData as typeof selectedLanguage);
+    }
+
+  }, []);
 
   return(
     <LanguageContext.Provider
