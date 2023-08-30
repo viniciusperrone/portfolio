@@ -9,6 +9,33 @@ import { useLanguage } from "@/hooks/useLanguage";
 const HREF_PT = '/images/brasil-icon.svg';
 const HREF_EN = '/images/estados-unidos-icon.svg';
 
+const listButtons = [
+  {
+    id: 0,
+    anchor: 'about',
+    pt: 'Sobre',
+    en: 'About'
+  },
+  {
+    id: 1,
+    anchor: 'skills',
+    pt: 'Habilidades',
+    en: 'Skills'
+  },
+  {
+    id: 2,
+    anchor: 'projects',
+    pt: 'Projetos',
+    en: 'Projects'
+  }, 
+  {
+    id: 3,
+    anchor: 'contact',
+    pt: 'Contato',
+    en: 'Contact'
+  }
+];
+
 export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
   const { selectedLanguage, onChangeLanguage } = useLanguage();
 
@@ -30,42 +57,18 @@ export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
       <Logo />
       <nav className="hidden md:block">
         <ul className="flex flex-row gap-10">
-          <li>
-            <a 
-              className="anchor-nav relative font-inter font-medium text-gray-default text-base"
-              // href="/sobre"
-              onClick={() => onClickAnchorRef("about")}
-            >
-              Sobre
-            </a>
-          </li>
-          <li>
-            <a 
-              className="anchor-nav relative font-inter font-medium text-gray-default text-base"
-              // href="/habilidades"
-              onClick={() => onClickAnchorRef("skills")}
-            >
-              Habilidades
-            </a>
-          </li>
-          <li>
-            <a 
-              className="anchor-nav relative font-inter font-medium text-gray-default text-base"
-              // href="/projetos"
-              onClick={() => onClickAnchorRef("projects")}
-            >
-              Projetos
-            </a>
-          </li>
-          <li>
-            <a
-              className="anchor-nav relative font-inter font-medium text-gray-default text-base"
-              // href="/contato"
-              onClick={() => onClickAnchorRef("contact")}
-            >
-              Contato
-            </a>
-          </li>
+            {
+              listButtons.map(button => (
+                <li key={button.id}>
+                  <a 
+                    className="anchor-nav relative font-inter font-medium text-gray-default text-base"
+                    onClick={() => onClickAnchorRef(button.anchor)}
+                  >
+                    {button[selectedLanguage]}
+                  </a>
+                </li>
+              ))
+            }
         </ul>
       </nav>
       <div className="flex flex-row justify-center items-center gap-4">
