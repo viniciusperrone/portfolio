@@ -1,4 +1,4 @@
-import { useState, HTMLAttributes } from 'react';
+import { useState, useRef, HTMLAttributes } from 'react';
 
 import { BsArrowRight } from "react-icons/bs";
 import { AiOutlineLink } from "react-icons/ai"
@@ -31,18 +31,21 @@ function Pill({
 
 function CardProject(props: ProjectProps) {
   const icon = props?.icon || <AiOutlineLink size={20} color="#FFFFFF" />;
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+
   return(
     <div 
       className="p-3 min-w-[350px] max-w-[350px] min-h-[400px] max-h-[400px] rounded-[12px]"
       style={props?.style}
     >
-      <img 
+      <img
         src={props.image}
         alt={props.title}
         className="rounded-[8px]"
       />
-      <main className="w-full flex flex-col px-2 mt-2">
-        <h2 className="text-2xl font-inter font-bold text-[#1E293B]">{props.title}</h2>
+      <main className="w-full h-[152px] flex flex-col px-2 mt-2 overflow-y-scroll">
+        <h2 className="text-2xl font-inter font-bold text-[#ffffff]">{props.title}</h2>
         <p className="text-base font-inter font-normal text-white">
           {props.description}
         </p>

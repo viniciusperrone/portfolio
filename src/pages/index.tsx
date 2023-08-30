@@ -9,10 +9,12 @@ import { Projects } from "@/components/Projects";
 import { Footer } from "@/components/Footer";
 import { FavButton } from "@/components/FavButton";
 import { Drawer } from "@/components/Drawer";
+import { useLanguage } from "@/hooks/useLanguage";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
   const [drawer, setDrawer] = useState<boolean>(false);
+  const { selectedLanguage } = useLanguage();
 
   useEffect(() => {
     setLoading(true);
@@ -20,7 +22,9 @@ export default function Home() {
       setLoading(false);
     }, 1200);
   }, []);
-  
+    
+  console.log('linguagem: ', selectedLanguage);
+
   return(
     <>
       <Head>
