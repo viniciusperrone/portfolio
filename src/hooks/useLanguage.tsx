@@ -26,16 +26,34 @@ function LanguageProvider({ children }: ProviderProps) {
   const [selectedLanguage, setSelectedLanguage] = useState<'pt' | 'en'>('pt');
 
   const onChangeToPortuguese = () => {
+    const languageStored = localStorage.getItem('language');
+
+    if(languageStored) {
+      localStorage.removeItem('language');
+    }
+
     setSelectedLanguage('pt');
     localStorage.setItem('language', 'pt');
   };
 
   const onChangeToEnglish = () => {
+    const languageStored = localStorage.getItem('language');
+
+    if(languageStored) {
+      localStorage.removeItem('language');
+    }
+
     setSelectedLanguage('en')
     localStorage.setItem('language', 'en');
   };
 
   const onChangeLanguage = () => {
+    const languageStored = localStorage.getItem('language');
+
+    if(languageStored) {
+      localStorage.removeItem('language');
+    }
+
     if(selectedLanguage === 'pt') {
       setSelectedLanguage('en');
       localStorage.setItem('language', 'en');
@@ -43,7 +61,7 @@ function LanguageProvider({ children }: ProviderProps) {
       return;
     }
 
-    localStorage.setItem('language', 'en');
+    localStorage.setItem('language', 'pt');
     setSelectedLanguage('pt');
   }
 
@@ -53,7 +71,6 @@ function LanguageProvider({ children }: ProviderProps) {
     if(storeData) {
       setSelectedLanguage(storeData as typeof selectedLanguage);
     }
-
   }, []);
 
   return(

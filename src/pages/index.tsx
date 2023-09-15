@@ -28,8 +28,6 @@ export default function Home() {
       setLoading(false);
     }, 1200);
   }, []);
-
-  console.log('language', selectedLanguage)
     
   return(
     <>
