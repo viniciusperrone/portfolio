@@ -1,21 +1,17 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BsSun, BsMoon } from 'react-icons/bs';
+import { useTheme } from '@/hooks/useTheme';
 
 export function ToggleTheme() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  const { theme, onChangeHandle } = useTheme();
 
   return (
     <motion.button
-      onClick={toggleMode}
+      onClick={onChangeHandle}
       whileTap={{ scale: 0.9 }}
       whileHover={{ scale: 1.1 }}
     >
-      {isDarkMode ? (
+      {theme === 'dark' ? (
         <motion.div
           initial={{ width: '0%' }}
           animate={{ width: '100%' }}
@@ -29,7 +25,7 @@ export function ToggleTheme() {
           animate={{ width: '100%' }}
           transition={{ duration: 0.3 }}
         >
-          <BsMoon color="white" size={20} className="cursor-pointer" />
+          <BsMoon color="#64748B" size={20} className="cursor-pointer" />
         </motion.div>
       )}
     </motion.button>

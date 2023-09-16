@@ -5,6 +5,8 @@ import { RiMenu4Line } from "react-icons/ri";
 import { ToggleTheme } from "./ToggleTheme";
 import { DrawerProps as HeaderProps } from "./Drawer";
 import { useLanguage } from "@/hooks/useLanguage";
+import classNames from "classnames";
+import { useTheme } from "@/hooks/useTheme";
 
 const HREF_PT = '/images/brasil-icon.svg';
 const HREF_EN = '/images/estados-unidos-icon.svg';
@@ -38,6 +40,7 @@ const listButtons = [
 
 export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
   const { selectedLanguage, onChangeLanguage } = useLanguage();
+  const { theme, setTheme } = useTheme();
 
   const countryLanguage = selectedLanguage === 'pt' ? HREF_PT : HREF_EN;
 
@@ -53,15 +56,25 @@ export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
   }
 
   return(
-    <header className="w-full h-20 border-solid border-b-2 border-purple-900 flex flex-row justify-between items-center px-8 md:px-20">
-      <Logo />
+    <header 
+      className={classNames("w-full h-20 border-solid border-b-2 border-purple-900 flex flex-row justify-between items-center px-8 md:px-20", {
+        "bg-purple-dark": theme === 'dark',
+        "bg-white": theme === 'light'
+      })}
+    >
+      <Logo 
+        theme={theme}
+      />
       <nav className="hidden md:block">
         <ul className="flex flex-row gap-10">
             {
               listButtons.map(button => (
                 <li key={button.id}>
                   <a 
-                    className="anchor-nav relative font-inter font-medium text-gray-default text-base"
+                    className={classNames("anchor-nav cursor-pointer relative font-inter font-medium text-gray-default text-base", {
+                      "text-gray-default": theme === 'dark',
+                      "text-[#A0A0A0]": theme === 'light'
+                    })}
                     onClick={() => onClickAnchorRef(button.anchor)}
                   >
                     {button[selectedLanguage]}
