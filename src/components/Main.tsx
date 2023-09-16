@@ -29,13 +29,12 @@ const developerPortuguese = ['um Desenvolvedor Mobile', 'um Desenvolvedor Web', 
 const developerEnglish = ['a Mobile Developer.', 'a Web Developer.', 'a FullStack Developer.'];
 
 function TitleHighlighted({ extraClasses }: any) {
+  const [typicalKey, setTypicalKey] = useState(0); 
   const { selectedLanguage } = useLanguage();
   const { theme } = useTheme();
   
-  const [typicalKey, setTypicalKey] = useState(0); // Chave para reiniciar o Typical
 
   useEffect(() => {
-    // Sempre que a linguagem for alterada, atualize a chave para reiniciar o Typical
     setTypicalKey((prevKey) => prevKey + 1);
   }, [selectedLanguage]);
 
@@ -62,7 +61,7 @@ function TitleHighlighted({ extraClasses }: any) {
         Vinicius Perrone
       </span>
       <Typical
-        key={typicalKey} // Chave para recriar o Typical quando a linguagem muda
+        key={typicalKey}
         steps={steps}
         loop={Infinity}
         wrapper="span"
