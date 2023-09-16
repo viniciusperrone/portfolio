@@ -42,7 +42,18 @@ function ThemeProvider({ children }: ProviderProps) {
   }
 
   useEffect(() => {
+    const darkThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const storeData = localStorage.getItem('dark');
+
+    if(!storeData && darkThemeQuery.matches) {
+      if (darkThemeQuery.matches) {
+        setTheme('dark')
+        return;
+      }
+
+      setTheme('light');
+      return;
+    }
 
     if(storeData) {
       setTheme(storeData as typeof theme);

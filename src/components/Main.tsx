@@ -1,7 +1,11 @@
 import Image from "next/image";
+import { useMemo } from "react";
+import classNames from "classnames";
 import Typical from 'react-typical';
+
 import { Code } from "./Code";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useTheme } from "@/hooks/useTheme";
 
 const descriptionInPortuguese = `
   👋 Olá, meu nome é Vinicius. Sou apaixonado por 
@@ -26,16 +30,32 @@ const developerEnglish = ['a Mobile Developer.', 'a Web Developer.', 'a FullStac
 
 function TitleHighlighted({ extraClasses }: any) {
   const { selectedLanguage } = useLanguage();
+  const { theme } = useTheme();
+  
+  const steps = useMemo(() => {
+    let kindDeveloper;
 
-  const kindDeveloper = selectedLanguage === 'en' ? developerEnglish : developerPortuguese;
+    if(selectedLanguage === 'en') {
+      kindDeveloper = [`, ${developerEnglish[0]}`, 1000, `, ${developerEnglish[1]}`, 1000, `, ${developerEnglish[2]}`, 1000]
+    } else {
+      kindDeveloper = [`, ${developerPortuguese[0]}`, 1000, `, ${developerPortuguese[1]}`, 1000, `, ${developerPortuguese[2]}`, 1000]
+    }
+
+    return kindDeveloper;
+  }, [selectedLanguage]);
 
   return(
-    <h1 className={`text-3xl md:text-5xl font-inter font-extrabold text-[#C6C6C6] w-full md:max-w-[500px] ${extraClasses}`}>
+    <h1 
+      className={classNames(`text-3xl md:text-5xl font-inter font-extrabold w-full md:max-w-[500px] ${extraClasses}`, {
+        "text-[#C6C6C6]": theme === 'dark',
+        "text-[#242442]": theme === 'light'
+      })}
+    >
       <span className="bg-gradient-to-r from-gradientBlue1 to-gradientBlue2 via-gradientBlue3 text-transparent bg-clip-text">
         Vinicius Perrone
       </span>
       <Typical
-        steps={[`, ${kindDeveloper[0]}`, 1000, `, ${kindDeveloper[1]}`, 1000, `, ${kindDeveloper[2]}`, 1000]}
+        steps={steps}
         loop={Infinity}
         wrapper="span"
       />
@@ -45,6 +65,7 @@ function TitleHighlighted({ extraClasses }: any) {
 
 export function Main() {
   const { selectedLanguage } = useLanguage();
+  const { theme } = useTheme();
 
   let description;
 
@@ -52,10 +73,21 @@ export function Main() {
   else description = descriptionInPortuguese;
 
   return(
-    <main id="about" className="w-full min-h-[calc(100vh-80px)] flex flex-col-reverse md:flex-row">
+    <main 
+      id="about" 
+      className={classNames("w-full min-h-[calc(100vh-80px)] flex flex-col-reverse md:flex-row", {
+        "bg-purple-dark": theme === 'dark',
+        "bg-white": theme === 'light'
+      })}
+    >
       <div className="w-full min-h-full flex flex-col md:justify-center md:pl-16 gap-10 md:gap-20 pt-10 md:pt-32 pb-10">
         <TitleHighlighted extraClasses="h-24 hidden md:block" />
-        <p className="font-open text-lg text-gray-400 max-w-[90%] m-auto md:m-0 md:max-w-[60%] text-justify">
+        <p 
+          className={classNames("font-open text-lg max-w-[90%] m-auto md:m-0 md:max-w-[60%] text-justify", {
+            "text-gray-400": theme === 'dark',
+            "text-[#64748B]": theme === 'light'
+          })}
+        >
           {description}
         </p>
         <Code />

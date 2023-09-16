@@ -40,7 +40,7 @@ const listButtons = [
 
 export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
   const { selectedLanguage, onChangeLanguage } = useLanguage();
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
 
   const countryLanguage = selectedLanguage === 'pt' ? HREF_PT : HREF_EN;
 
@@ -57,9 +57,9 @@ export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
 
   return(
     <header 
-      className={classNames("w-full h-20 border-solid border-b-2 border-purple-900 flex flex-row justify-between items-center px-8 md:px-20", {
-        "bg-purple-dark": theme === 'dark',
-        "bg-white": theme === 'light'
+      className={classNames("w-full h-20 border-solid border-b-2 flex flex-row justify-between items-center px-8 md:px-20", {
+        "border-purple-900 bg-purple-dark": theme === 'dark',
+        "border-[#e9eded] bg-white": theme === 'light'
       })}
     >
       <Logo 
@@ -68,19 +68,25 @@ export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
       <nav className="hidden md:block">
         <ul className="flex flex-row gap-10">
             {
-              listButtons.map(button => (
-                <li key={button.id}>
-                  <a 
-                    className={classNames("anchor-nav cursor-pointer relative font-inter font-medium text-gray-default text-base", {
-                      "text-gray-default": theme === 'dark',
-                      "text-[#A0A0A0]": theme === 'light'
-                    })}
-                    onClick={() => onClickAnchorRef(button.anchor)}
-                  >
-                    {button[selectedLanguage]}
-                  </a>
-                </li>
-              ))
+              listButtons.map(button =>{ 
+                let label = button.en;
+                
+                if(selectedLanguage === 'pt') label = button.pt;
+          
+                return(
+                  <li key={button.id}>
+                    <a 
+                      className={classNames("anchor-nav cursor-pointer relative font-inter font-medium text-base", {
+                        "text-gray-default": theme === 'dark',
+                        "text-[#A0A0A0]": theme === 'light'
+                      })}
+                      onClick={() => onClickAnchorRef(button.anchor)}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                )
+              })
             }
         </ul>
       </nav>
@@ -95,7 +101,7 @@ export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
           onClick={onChangeLanguage}
         />
         <RiMenu4Line
-          color="#FBFBFB"
+          color={theme === 'dark' ? "#FBFBFB" : '#A0A0A0'}
           className="h-6 w-6 block cursor-pointer md:hidden"
           onClick={onOpen}
         />

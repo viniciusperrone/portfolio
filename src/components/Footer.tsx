@@ -1,3 +1,5 @@
+import { useTheme } from "@/hooks/useTheme";
+import classNames from "classnames";
 import { 
   AiFillGithub, 
   AiFillInstagram, 
@@ -29,8 +31,15 @@ const socialMedias = [
 ]
 
 export function Footer() {
+  const { theme } = useTheme();
+
   return(
-    <footer className="md:px-20 py-10 flex flex-col-reverse md:flex-row justify-between items-center gap-5 md:gap-0">
+    <footer 
+      className={classNames("md:px-20 py-10 flex flex-col-reverse md:flex-row justify-between items-center gap-5 md:gap-0", {
+        "bg-purple-dark": theme === 'dark',
+        "bg-white": theme === 'light'
+      })}
+    >
       <p className="text-sm font-inter font-normal text-[#94A3B8]">© 2023 Vinicius Perrone, All rights reserved.</p>
       <ol className="flex flex-row gap-4 items-center">
         {

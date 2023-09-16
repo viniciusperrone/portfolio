@@ -4,6 +4,8 @@ import { BsArrow90DegLeft, BsWhatsapp } from "react-icons/bs";
 import { AddressBook, Book, BracketsAngle, Hammer } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSendMessage } from "@/hooks/useSendMessage";
+import { useTheme } from "@/hooks/useTheme";
+import { getIconComponent } from "@/utils/getIcon";
 
 export type DrawerProps = {
   open: boolean;
@@ -14,25 +16,25 @@ export type DrawerProps = {
 const listAnchor = [
   {
     id: 0,
-    icon: <Book size={32} color="white" />,
+    icon: 'book',
     name: 'Sobre',
     anchor: 'about'
   },
   {
     id: 1,
-    icon: <Hammer size={32} color="white" />,
+    icon: 'hammer',
     name: 'Habilidades',
     anchor: 'skills'
   },
   {
     id: 2,
-    icon: <BracketsAngle size={32} color="white" />,
+    icon: 'bracket',
     name: 'Projetos',
     anchor: 'projects'
   },
   {
     id: 3,
-    icon: <AddressBook size={32} color="white" />,
+    icon: 'address',
     name: 'Contato',
     anchor: 'contact'
   }
@@ -40,6 +42,7 @@ const listAnchor = [
 
 export function Drawer({ open, onClose }: Omit<DrawerProps, 'onOpen'>) {
   const { sendMessage } = useSendMessage();
+  const { theme } = useTheme();
   
   function onSelectSection(id: string) {
     onClose();
@@ -61,9 +64,11 @@ export function Drawer({ open, onClose }: Omit<DrawerProps, 'onOpen'>) {
   return (
     <AnimatePresence>
       <motion.div 
-        className={classNames("fixed inset-y-0 left-0 flex flex-col z-10 bg-purple-dark w-screen h-screen px-5", {
+        className={classNames("fixed inset-y-0 left-0 flex flex-col z-10 w-screen h-screen px-5", {
           "flex sm:hidden": open,
-          "hidden": !open
+          "hidden": !open,
+          "bg-purple-dark": theme === 'dark',
+          "bg-white": theme === 'light'
         })}
         initial={{ x: open ? 300 : 0 }} // Posição inicial fora da tela à direita
         animate={{ x: open ? 0 : 300 }} // Posição final no centro da tela
@@ -71,24 +76,31 @@ export function Drawer({ open, onClose }: Omit<DrawerProps, 'onOpen'>) {
       >
         <header className="w-full h-20 flex items-center justify-between">
           <BsArrow90DegLeft 
-            color="white"
+            color={theme === 'dark' ? "white" : '#A0A0A0'}
             size={26}
             onClick={onClose}
           />
-          <Logo />
+          <Logo theme={theme} />
           <div />
         </header>
         <ol className="flex-1 flex flex-col gap-5 px-5 pt-14">
           {
             listAnchor.map(item => {
+              const iconComponent = getIconComponent(item.icon, theme);
+
               return (
                 <span
                   key={item.id}
                   className="flex flex-row gap-5"
                   onClick={() => onSelectSection(item.anchor)}
                 >
-                  {item.icon}
-                  <p className="text-xl font-inter font-medium text-white">
+                  {iconComponent}
+                  <p 
+                    className={classNames("text-xl font-inter font-medium", {
+                      "text-white": theme === 'dark',
+                      "text-[#A0A0A0]": theme === 'light'
+                    })}
+                  >
                     {item.name}
                   </p>
                 </span>
