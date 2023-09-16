@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import classNames from "classnames";
 import Typical from 'react-typical';
 
@@ -32,6 +32,13 @@ function TitleHighlighted({ extraClasses }: any) {
   const { selectedLanguage } = useLanguage();
   const { theme } = useTheme();
   
+  const [typicalKey, setTypicalKey] = useState(0); // Chave para reiniciar o Typical
+
+  useEffect(() => {
+    // Sempre que a linguagem for alterada, atualize a chave para reiniciar o Typical
+    setTypicalKey((prevKey) => prevKey + 1);
+  }, [selectedLanguage]);
+
   const steps = useMemo(() => {
     let kindDeveloper;
 
@@ -44,7 +51,7 @@ function TitleHighlighted({ extraClasses }: any) {
     return kindDeveloper;
   }, [selectedLanguage]);
 
-  return(
+  return (
     <h1 
       className={classNames(`text-3xl md:text-5xl font-inter font-extrabold w-full md:max-w-[500px] ${extraClasses}`, {
         "text-[#C6C6C6]": theme === 'dark',
@@ -55,6 +62,7 @@ function TitleHighlighted({ extraClasses }: any) {
         Vinicius Perrone
       </span>
       <Typical
+        key={typicalKey} // Chave para recriar o Typical quando a linguagem muda
         steps={steps}
         loop={Infinity}
         wrapper="span"
