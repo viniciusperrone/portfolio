@@ -37,13 +37,13 @@ function ThemeProvider({ children }: ProviderProps) {
       return;
     }
 
-    localStorage.setItem('language', 'dark');
+    localStorage.setItem('theme', 'dark');
     setTheme('dark');
   }
 
   useEffect(() => {
     const darkThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const storeData = localStorage.getItem('dark');
+    const storeData = localStorage.getItem('theme');
 
     if(!storeData && darkThemeQuery.matches) {
       if (darkThemeQuery.matches) {
@@ -51,6 +51,7 @@ function ThemeProvider({ children }: ProviderProps) {
         return;
       }
 
+      document.body.style.backgroundColor = '#FFFFFF';
       setTheme('light');
       return;
     }
