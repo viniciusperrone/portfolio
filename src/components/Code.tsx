@@ -21,7 +21,7 @@ const CodeString = `
   print('so proceed...☕')
 `;
 
-export function Code() {
+export function Code({ downBreakPoint }: any) {
   const [copied, setCopied] = useState<boolean>(false);
   const { theme } = useTheme();
 
@@ -39,9 +39,11 @@ export function Code() {
   
   return(
     <div 
-      className={classNames("code min-h-[250px] w-[80%] m-auto md:m-0 md:w-[400px] border-solid border-[1px] rounded-2xl", {
+      className={classNames("code min-h-[250px] border-solid border-[1px] rounded-2xl", {
         "bg-purple-dark border-purple-900": theme === 'dark',
-        "bg-[#f4f6f6] border-[#d2dada]": theme === 'light'
+        "bg-[#f4f6f6] border-[#d2dada]": theme === 'light',
+        "m-0 w-[400px]": !downBreakPoint,
+        "m-auto w-[80%]": downBreakPoint
       })}
     >
       <header className="w-full flex flex-row justify-between py-2 px-2">

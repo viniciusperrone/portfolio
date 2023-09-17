@@ -28,7 +28,7 @@ const descriptionInEnglish = `
 const developerPortuguese = ['um Desenvolvedor Mobile', 'um Desenvolvedor Web', 'um Desenvolvedor FullStack'];
 const developerEnglish = ['a Mobile Developer.', 'a Web Developer.', 'a FullStack Developer.'];
 
-function TitleHighlighted({ extraClasses }: any) {
+function TitleHighlighted({ extraClasses, downBreakPoint }: any) {
   const [typicalKey, setTypicalKey] = useState(0); 
   const { selectedLanguage } = useLanguage();
   const { theme } = useTheme();
@@ -52,9 +52,11 @@ function TitleHighlighted({ extraClasses }: any) {
 
   return (
     <h1 
-      className={classNames(`text-3xl md:text-5xl font-inter font-extrabold w-full md:max-w-[500px] ${extraClasses}`, {
+      className={classNames(`text-3xl md:text-5xl font-inter font-extrabold ${extraClasses}`, {
         "text-[#C6C6C6]": theme === 'dark',
-        "text-[#242442]": theme === 'light'
+        "text-[#242442]": theme === 'light',
+        "max-w-[500px]": !downBreakPoint,
+        "w-full": downBreakPoint
       })}
     >
       <span className="bg-gradient-to-r from-gradientBlue1 to-gradientBlue2 via-gradientBlue3 text-transparent bg-clip-text">
@@ -73,39 +75,86 @@ function TitleHighlighted({ extraClasses }: any) {
 export function Main() {
   const { selectedLanguage } = useLanguage();
   const { theme } = useTheme();
+  const [downBreakPoint, setDownBreakPoint] = useState<boolean>(false);
 
   let description;
 
   if(selectedLanguage === 'en') description = descriptionInEnglish;
   else description = descriptionInPortuguese;
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 985) {
+        setDownBreakPoint(true);
+      } else {
+        setDownBreakPoint(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+
   return(
     <main 
       id="about" 
-      className={classNames("w-full min-h-[calc(100vh-80px)] flex flex-col-reverse md:flex-row", {
+      className={classNames("w-full min-h-[calc(100vh-80px)] flex", {
         "bg-purple-dark": theme === 'dark',
-        "bg-white": theme === 'light'
+        "bg-white": theme === 'light',
+        "flex-row": !downBreakPoint,
+        "flex-col-reverse": downBreakPoint
       })}
     >
-      <div className="w-full min-h-full flex flex-col md:justify-center md:pl-16 gap-10 md:gap-20 pt-10 md:pt-32 pb-10">
-        <TitleHighlighted extraClasses="h-24 hidden md:block" />
+      <div 
+        className={classNames("w-full min-h-full flex flex-col", {
+          "justify-center gap-20 pl-16 pt-32": !downBreakPoint,
+          "gap-10 pt-10 pb-10": downBreakPoint
+        })}
+      >
+        <TitleHighlighted 
+          extraClasses={classNames("h-24", {
+            "block": !downBreakPoint,
+            "hidden": downBreakPoint
+          })}
+        />
         <p 
-          className={classNames("font-open text-lg max-w-[90%] m-auto md:m-0 md:max-w-[60%] text-justify", {
+          className={classNames("font-open text-lg text-justify", {
             "text-gray-400": theme === 'dark',
-            "text-[#64748B]": theme === 'light'
+            "text-[#64748B]": theme === 'light',
+            "max-w-[60%] m-0": !downBreakPoint,
+            "max-w-[90%] m-auto": downBreakPoint
           })}
         >
           {description}
         </p>
-        <Code />
+        <Code 
+          downBreakPoint={downBreakPoint}
+        />
       </div>
-      <div className="w-full min-h-full py-5 px-5 md:px-0 md:py-0">
-        <TitleHighlighted extraClasses="h-[72px] block md:hidden mb-6" />
+      <div 
+        className={classNames("w-full min-h-full", {
+          "px-0 py-0": !downBreakPoint,
+          "py-5 px-5": downBreakPoint
+        })}
+      >
+        <TitleHighlighted 
+          extraClasses={classNames("h-[72px] mb-6", {
+            "hidden": !downBreakPoint,
+            "block": downBreakPoint
+          })}
+        />
         <Image 
           src="/images/bg_main_section.png"
           height={600}
           width={600}
           alt="Main Section"
+          className={classNames({
+            "mx-auto mt-5": downBreakPoint
+          })}
         />
       </div>
     </main>
