@@ -1,3 +1,4 @@
+import { useLanguage } from "@/hooks/useLanguage";
 import { useTheme } from "@/hooks/useTheme";
 import classNames from "classnames";
 import { 
@@ -32,6 +33,7 @@ const socialMedias = [
 
 export function Footer() {
   const { theme } = useTheme();
+  const { selectedLanguage } = useLanguage();
 
   return(
     <footer 
@@ -40,7 +42,9 @@ export function Footer() {
         "bg-white": theme === 'light'
       })}
     >
-      <p className="text-sm font-inter font-normal text-[#94A3B8]">© 2023 Vinicius Perrone, All rights reserved.</p>
+      <p className="text-sm font-inter font-normal text-[#94A3B8] break-all">
+        © 2023 Vinicius Perrone, {selectedLanguage === 'en' ? 'All rights reserved.' : 'Todos os direitos reservados.'}
+      </p>
       <ol className="flex flex-row gap-4 items-center">
         {
           socialMedias.map(media => (

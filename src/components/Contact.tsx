@@ -4,9 +4,11 @@ import { Input } from "./Input";
 import { TextArea } from "./TextArea";
 import classNames from "classnames";
 import { EmailIllustration } from "./EmailIllustration";
+import { useLanguage } from "@/hooks/useLanguage";
 
 export function Contact() {
   const { theme } = useTheme();
+  const { selectedLanguage } = useLanguage();
   const fieldClasses = theme === 'light' ? 'border-[1px] border-solid border-[#94A3B8]' : ''
 
   return(
@@ -24,13 +26,13 @@ export function Contact() {
             "text-dark-default": theme === 'light'
           })}
         >
-          Keep In Touch.
+          {selectedLanguage === 'en' ? 'Keep In Touch.' : 'Mantenha Contato.'}
         </h1>
         {theme === 'dark' ? <Envelope /> : <EmailIllustration />}
       </div>
       <form className="w-full flex flex-col items-center gap-8">
         <Input 
-          placeholder="Name"
+          placeholder={selectedLanguage === 'en' ? "Name" : "Nome"}
           extraClasses={fieldClasses}
         />
         <Input 
@@ -38,14 +40,14 @@ export function Contact() {
           extraClasses={fieldClasses}
         />
         <TextArea 
-          placeholder="Message"
+          placeholder={selectedLanguage === 'en' ? "Message" : "Mensagem"}
           extraClasses={fieldClasses}
         />
         <button 
           className="h-12 w-[90%] md:w-96 rounded-[8px] bg-[#0DA2E7] text-white transition-colors hover:opacity-90"
           type="submit" 
         >
-          SUBMIT
+        {selectedLanguage === 'en' ? 'SUBMIT' : 'ENVIAR'}
         </button>
       </form>
     </div>

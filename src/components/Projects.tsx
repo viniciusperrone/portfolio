@@ -5,6 +5,7 @@ import { AiOutlineLink } from "react-icons/ai"
 import { ProjectProps, projects } from '@/mock/projects';
 import { useTheme } from '@/hooks/useTheme';
 import classNames from 'classnames';
+import { useLanguage } from '@/hooks/useLanguage';
 
 const categoryProjects = ['All projects', 'Next.js', 'React.js', 'Node.js', 'React Native', 'Django'];
 
@@ -20,7 +21,12 @@ function Pill({
   isDark = false,
   ...rest 
 }: PillProps) {
+  const { selectedLanguage } = useLanguage();
+
   let extraClasse: string;
+  let categoryFormatted: string = category;
+
+  if(selectedLanguage === 'pt' && category === 'All projects') categoryFormatted = 'Todos os projetos'
 
   if(isDark) {
     extraClasse = isSelected ? 'text-white' : 'text-[#94A3B8]'
@@ -41,7 +47,7 @@ function Pill({
       {...rest}
     >
       <p className={`text-sm font-inter font-medium ${extraClasse}`}>
-        {category}
+        {categoryFormatted}
       </p>
     </span>
   )
@@ -81,8 +87,8 @@ function CardProject(props: ProjectProps) {
 export function Projects() {
   const [categorySelected, setCategorySelected] = useState<string>('All projects');
   const { theme } = useTheme();
+  const { selectedLanguage } = useLanguage();
   const projectsByCategory = projects.filter(project => project.categories.includes(categorySelected));
-
 
   return(
     <div 
@@ -97,13 +103,13 @@ export function Projects() {
           <BsArrowRight 
             color="#0EA5E9"
           />
-          Checkout my work
+          {selectedLanguage === 'en' ? 'Checkout my work' : 'Verifique meu trabalho'}
         </span>
-        <h1 className={classNames("text-3xl md:text-5xl font-inter font-extrabold h-20 max-w-[500px]", {
+        <h1 className={classNames("text-3xl md:text-5xl font-inter font-extrabold h-20 max-w-[550px]", {
           "text-white": theme === 'dark',
           "text-dark-default": theme === 'light'
         })}>
-          Projects I build
+          {selectedLanguage === 'en' ? 'Projects I build' : 'Projetos que construo'}
         </h1>
         <div className="flex flex-row flex-wrap gap-4">
           {
@@ -134,7 +140,23 @@ export function Projects() {
           }}
         >
           {
-            projectsByCategory.map(project => <CardProject key={project.id} {...project} />)
+            projectsByCategory.map(project => {
+              const { description, ...othersAttributes } = project;
+              
+              let descriptionFormatted: string = description.en;
+
+              if(selectedLanguage === 'pt') {
+                descriptionFormatted = description.pt;
+              }
+
+              return (
+                  <CardProject 
+                    key={project.id} 
+                    description={descriptionFormatted} 
+                    {...othersAttributes} 
+                  />
+                )
+            })
           }
         </div>
       </div>

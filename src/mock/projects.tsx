@@ -19,11 +19,19 @@ export const projects = [
   {
     id: 0,
     title: 'UBEMath',
-    description: `
-      🕹 The UBEMath project is a solution for Math difficulties suffered
-      by 9th-grade students, it consists of a web platform and a 2D
-      game developed for the "TCC" at Fundação Matias Machline (FMM)
-    `,
+    description: 
+    {
+      pt: `
+        🕹 O projeto UBEMath é uma solução para dificuldades sofridas em matemática
+        pelos alunos do 9º ano, é composto por uma plataforma web e uma plataforma 2D
+        jogo desenvolvido para o "TCC" da Fundação Matias Machline (FMM)
+      `,
+      en:  `
+        🕹 The UBEMath project is a solution for Math difficulties suffered
+        by 9th-grade students, it consists of a web platform and a 2D
+        game developed for the "TCC" at Fundação Matias Machline (FMM)
+      `
+    },
     image: '/images/ubemath.png',
     categories: ['All projects', 'React.js', 'Node.js'],
     year: '2020',
@@ -38,10 +46,16 @@ export const projects = [
   {
     id: 1,
     title: 'FoodFast',
-    description: `
-      🍽 The FoodFast project is an application to automate food 
-      organization and the recipe making process
-    `,
+    description: {
+      pt: `
+        🍽 O projeto FoodFast é um aplicativo para automatizar alimentos
+        organização e o processo de fabricação de receitas
+      `,
+      en:  `
+        🍽 The FoodFast project is an application to automate food 
+        organization and the recipe making process
+      `
+    },
     image: '/images/foodfast.svg',
     categories: ['All projects', 'React Native', 'Node.js'],
     year: '2021',
@@ -55,10 +69,16 @@ export const projects = [
   {
     id: 2,
     title: 'Ignite Lab',
-    description: `
-      🚀 The Ignite Lab project is a specialization in React for 
-      developers to reach their next level.
-    `,
+    description: { 
+      pt: `
+        🚀 O projeto Ignite Lab é uma especialização em React para
+        desenvolvedores para alcançar seu próximo nível.
+      `,
+      en: `
+        🚀 The Ignite Lab project is a specialization in React for 
+        developers to reach their next level.
+      `
+    },
     image: "images/ignite-lab.png",
     categories: ['All projects', 'React.js'],
     year: '2022',
@@ -73,9 +93,14 @@ export const projects = [
   {
     id: 3,
     title: 'Rocket Help',
-    description: `
-      🏳 Hardware equipment help request application.
-    `,
+    description: {
+      pt: `
+        🏳 Equipamentos de hardware auxiliam na solicitação de aplicação.
+      `,
+      en:  `
+        🏳 Hardware equipment help request application.
+      `
+    },
     image: 'images/rocket.svg',
     categories: ['All projects', 'React Native', 'React Native', 'Node.js'],
     year: '2022',
@@ -90,9 +115,14 @@ export const projects = [
   {
     id: 4,
     title: 'Klutch-Tech',
-    description: `
-      🏦 Bank loan application simulation.
-    `,
+    description: {
+      pt: `
+        🏦 Simulação de solicitação de empréstimo bancário.
+      `,
+      en:  `
+        🏦 Bank loan application simulation.
+      `
+    },
     image: "images/klutch-test.png",
     categories: ['All projects', 'Next.js', 'React.js', 'Django'],
     year: '2022',
