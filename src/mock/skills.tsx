@@ -3,6 +3,7 @@ import * as S from 'react-icons/si';
 import { AWSIcon } from '../components/AWSIcon';
 import { MySQLIcon } from '../components/MySQLIcon';
 import Image from 'next/image';
+import { FastifyIcon } from '@/components/FastifyIcon';
 
 export const techs = [
   {
@@ -93,7 +94,7 @@ export const techs = [
   {
     key: 'fastify',
     name: 'Fastify',
-    icon: <S.SiFastify color="#FFFFFF" size={40} />
+    icon: <FastifyIcon />
   },
   {
     key: 'mysql',
