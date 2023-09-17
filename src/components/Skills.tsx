@@ -35,9 +35,9 @@ export function Skills() {
         </h1>
       </div>
       <div className='flex flex-row flex-wrap items-center justify-center md:grid md:grid-cols-2 lg:grid-cols-5 gap-5 px-10'>
-        {techs.map((tech) => {
+        {techs.map((tech, index) => {
           return (
-            <Fragment>
+            <Fragment key={index}>
               <Tech 
                 key={tech.name}
                 icon={tech.icon}
