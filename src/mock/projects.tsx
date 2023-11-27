@@ -45,6 +45,36 @@ export const projects = [
   },
   {
     id: 1,
+    title: 'Habits',
+    description: {
+      pt: `
+        🚀 Projeto fullstack de aplicativo de rastreamento de hábitos com
+        calendário mostrando hábitos por dia com diferentes
+        tons de cores para identificar a conclusão do hábito a cada dia.
+        Possibilidade de criar e editar conclusões de hábitos
+        diário.
+      `,
+      en:  `
+        🚀 Habit tracking app fullstack project with 
+        calendar showing habits per day with different 
+        color tones to identify habit completion each day. 
+        Possibility of creating and editing habit conclusions 
+        daily.
+      `
+    },
+    image: "images/habits.svg",
+    categories: ['All projects', 'React Native', 'React.js', 'Node.js'],
+    year: '2022',
+    href: 'https://github.com/viniciusperrone/nlw-setup',
+    icon: <AiOutlineLink size={20} color="#FFFFFF"/>,
+    style: {
+      background: "linear-gradient(45deg, rgba(139,92,246,1) 40%, rgba(249,168,211,1) 80%, rgba(249,168,211,1) 100%)",
+      boxShadow: `0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 50px rgba(0, 0, 0, 0.1), 0 0 20px #f9a8d3, 0 0 40px #f9a8d3`,
+      transform: "rotate(-2deg)"
+    }
+  },
+  {
+    id: 1,
     title: 'FoodFast',
     description: {
       pt: `
@@ -62,8 +92,32 @@ export const projects = [
     href: 'https://github.com/viniciusperrone/FoodFast',
     icon: <AiFillGithub size={22} color="#FFFFFF"/>,
     style: {
-      background: "linear-gradient(90deg, rgba(93,129,152,1) 40%, rgba(129,159,177,1) 80%, rgba(129,159,177,1) 100%)",
+      background: "linear-gradient(90deg, rgb(93, 129, 152) 40%, rgba(129,159,177,1) 80%, rgba(129,159,177,1) 100%)",
       boxShadow: `0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 50px rgba(0, 0, 0, 0.1), 0 0 20px #819fb1, 0 0 40px #819fb1`
+    }
+  },
+  {
+    id: 2,
+    title: 'SalesStore',
+    description: { 
+      pt: `
+        🚩 API de uma Loja de Vendas seguindo 
+        princípios de DDD e Design Patterns.
+      `,
+      en: `
+        🚩 Sales store API following DDD and 
+        Design Patterns principles.
+      `
+    },
+    image: "images/salesstore.svg",
+    categories: ['All projects', 'React.js'],
+    year: '2022',
+    href: 'https://github.com/viniciusperrone/SalesStore',
+    icon: <AiFillGithub size={22} color="#FFFFFF"/>,
+    style: {
+      background: "linear-gradient(90deg, #6C91BF 40%, #446C9C 80%, #324E71 100%)",
+      transform: "rotate(-1deg)",
+      boxShadow: `0 4px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 50px rgba(0, 0, 0, 0.1), 0 0 20px #00b881, 0 0 40px #00875f`
     }
   },
   {
@@ -80,6 +134,20 @@ export const projects = [
       `
     },
     image: "images/ignite-lab.png",
+    containerImage: {
+      style: {
+        backgroundImage: 'linear-gradient(180deg, #0370B2 0%, #2CB03B 100%)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+      }
+    },
+    imageProps: {
+      style: {
+        objectFit: 'cover',
+        backgroundClip: 'text',
+        color: 'transparent',
+      }
+    },
     categories: ['All projects', 'React.js'],
     year: '2022',
     href: 'https://ignite-lab-sigma-lovat.vercel.app/',
@@ -113,7 +181,7 @@ export const projects = [
     }
   },
   {
-    id: 4,
+    id: 6,
     title: 'Klutch-Tech',
     description: {
       pt: `
