@@ -1,34 +1,93 @@
+import { useTheme } from "@/hooks/useTheme";
 import { Envelope } from "./Envelope";
-import { Input } from "./Input";
 import { TextArea } from "./TextArea";
+import classNames from "classnames";
+import { EmailIllustration } from "./EmailIllustration";
+import { useLanguage } from "@/hooks/useLanguage";
+import { z } from "zod";
+import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "./ui/input";
+
+const formSchema = z.object({
+  name: z.string().min(3, {
+    message: "O nome deve conter pelo menos 3 caracteres.",
+  }),
+  email: z
+    .string({
+      required_error: "E-mail é obrigatório.",
+    })
+    .email({
+      message: "Formato de e-mail está inválido.",
+    }),
+  message: z.string().min(1, {
+    message: "Escreva uma mensagem.",
+  }),
+});
+
+const Form = FormProvider;
 
 export function Contact() {
+  const { theme } = useTheme();
+  const { selectedLanguage } = useLanguage();
+
+  const fieldClasses = theme === 'light' ? 'border-[1px] border-solid border-[#94A3B8]' : '';
+  
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {}
+
   return(
     <div 
       id="contact"
-      className="w-full flex flex-col md:flex-row gap-10 md:gap-0 py-10 md:mb-20"
+      className={classNames("w-full flex flex-col md:flex-row gap-10 md:gap-0 py-10 md:pb-20", {
+        "bg-purple-dark": theme === 'dark',
+        "bg-white": theme === 'light',
+      })}
     >
       <div className="w-full flex flex-col px-10 gap-5 md:gap-20">
-        <h1 className="text-2xl md:text-4xl font-inter font-semibold text-white md:ml-6">Keep In Touch.</h1>
-        <Envelope />
-      </div>
-      <form className="w-full flex flex-col items-center gap-8">
-        <Input 
-          placeholder="Name"
-        />
-        <Input 
-          placeholder="Email"
-        />
-        <TextArea 
-          placeholder="Message"
-        />
-        <button 
-          className="h-12 w-[90%] md:w-96 rounded-[8px] bg-[#0DA2E7] text-white transition-colors hover:opacity-90"
-          type="submit" 
+        <h1 
+          className={classNames("text-2xl md:text-4xl font-inter font-semibold md:ml-6", {
+            "text-white": theme === 'dark',
+            "text-dark-default": theme === 'light'
+          })}
         >
-          SUBMIT
-        </button>
-      </form>
+          {selectedLanguage === 'en' ? 'Keep In Touch.' : 'Mantenha Contato.'}
+        </h1>
+        {theme === 'dark' ? <Envelope /> : <EmailIllustration />}
+      </div>
+      <Form {...form}>
+        <form 
+          className="w-full flex flex-col items-center gap-8"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <Input
+            placeholder={selectedLanguage === 'en' ? "Name" : "Nome"}
+            className={fieldClasses}
+          />
+          <Input 
+            placeholder="Email"
+            className={fieldClasses}
+          />
+          <TextArea 
+            placeholder={selectedLanguage === 'en' ? "Message" : "Mensagem"}
+            extraClasses={fieldClasses}
+          />
+          <button 
+            className="h-12 w-[90%] md:w-96 rounded-[8px] bg-[#0DA2E7] text-white transition-colors hover:opacity-90"
+            type="submit" 
+          >
+          {selectedLanguage === 'en' ? 'SUBMIT' : 'ENVIAR'}
+          </button>
+        </form>
+      </Form>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
 import Link from 'next/link';
+import { LanguageProvider } from '@/hooks/useLanguage';
 
 export default class MyDocument extends Document {
   render() {

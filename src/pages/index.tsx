@@ -9,38 +9,46 @@ import { Projects } from "@/components/Projects";
 import { Footer } from "@/components/Footer";
 import { FavButton } from "@/components/FavButton";
 import { Drawer } from "@/components/Drawer";
+import { useLanguage } from "@/hooks/useLanguage";
+
+const SUBTITLE_EN = 'Full Stack Developer';
+const SUBTITLE_PT = 'Desenvolvedor Full Stack';
+
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
   const [drawer, setDrawer] = useState<boolean>(false);
+  const { selectedLanguage } = useLanguage();
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 1200);
-  // }, []);
-  
+  const secondTitle = selectedLanguage === 'en' ? SUBTITLE_EN : SUBTITLE_PT;
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+  }, []);
+    
   return(
     <>
       <Head>
-        <title>Vinicius Perrone | Full Stack Developer</title>
+        <title>Vinicius Perrone | {secondTitle}</title>
       </Head>
-      {/* { loading && <LoadingPage /> } */}
-      {/* {
-        !loading && ( */}
-        <>
-          <Drawer open={drawer} onClose={() => setDrawer(false)}/>
-          <Header onOpen={() => setDrawer(true)}/>
-          <Main />
-          <Skills />
-          <Projects />
-          <Contact />
-          <Footer />
-          <FavButton />
-        </>
-        {/* ) */}
-      {/* } */}
+      { loading && <LoadingPage /> }
+      {
+        !loading && (
+          <>
+            <Drawer open={drawer} onClose={() => setDrawer(false)}/>
+            <Header onOpen={() => setDrawer(true)}/>
+            <Main />
+            <Skills />
+            <Projects />
+            <Contact />
+            <Footer />
+            <FavButton />
+          </>
+        )
+      }
     </>
   )
 }

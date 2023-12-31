@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { HiDocument } from "react-icons/hi";
+import { useTheme } from "@/hooks/useTheme";
+import classNames from "classnames";
 const SyntaxPythonCode = dynamic(() => import('./SyntaxPythonCode'), { ssr: false });
 
 const CodeString = `
@@ -19,8 +21,9 @@ const CodeString = `
   print('so proceed...☕')
 `;
 
-export function Code() {
+export function Code({ downBreakPoint }: any) {
   const [copied, setCopied] = useState<boolean>(false);
+  const { theme } = useTheme();
 
   async function handleCopyClick () {
     try {
@@ -35,7 +38,14 @@ export function Code() {
   };
   
   return(
-    <div className="code min-h-[250px] w-[80%] m-auto md:m-0 md:w-[400px] bg-purple-dark border-solid border-[1px] border-purple-900 rounded-2xl">
+    <div 
+      className={classNames("code min-h-[250px] border-solid border-[1px] rounded-2xl", {
+        "bg-purple-dark border-purple-900": theme === 'dark',
+        "bg-[#f4f6f6] border-[#d2dada]": theme === 'light',
+        "m-0 w-[400px]": !downBreakPoint,
+        "m-auto w-[80%]": downBreakPoint
+      })}
+    >
       <header className="w-full flex flex-row justify-between py-2 px-2">
         <div className="flex flex-row items-center gap-1">
           <div className="w-3 h-3 bg-red-600 rounded-full"/>
@@ -45,19 +55,27 @@ export function Code() {
         <code className="text-purple-900">/coffee.py</code>
         <HiDocument 
           id="copy-button"
-          className="w-5 h-5 text-gray-default cursor-pointer transition-colors hover:opacity-80"
+          className={classNames("w-5 h-5 cursor-pointer transition-colors hover:opacity-80", {
+            "text-gray-default": theme === 'dark',
+            "text-[#8fa3a3]": theme === 'light'
+          })}
           aria-label="Copiar"
           onClick={handleCopyClick}
         />
         <span 
           id="copy-tooltip"
-          className="text-gray-default border-solid border-2 rounded-xl border-purple-900 bg-purple-dark"
+          className={classNames("border-solid border-2 rounded-xl", {
+            "border-purple-900 bg-purple-dark text-gray-default": theme === 'dark',
+            "bg-[#f4f6f6] border-[#9aacac] text-[#789191]": theme === 'light'
+          })}
         >
           { copied ? "Copiado" : "Clique para copiar" }
         </span>
       </header>
       <main className="w-full">
-        <SyntaxPythonCode code={CodeString} />
+        <SyntaxPythonCode 
+          code={CodeString} 
+        />
       </main>
     </div>
   )
