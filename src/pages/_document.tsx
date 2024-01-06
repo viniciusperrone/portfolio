@@ -2,7 +2,6 @@ import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
 import Link from 'next/link';
-import { LanguageProvider } from '@/hooks/useLanguage';
 
 export default class MyDocument extends Document {
   render() {
@@ -11,7 +10,7 @@ export default class MyDocument extends Document {
         <Head>
           <Link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
           <Script defer src="https://pyscript.net/latest/pyscript.js"></Script>
-          <Link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+          <Link key="favicon" rel="icon" href="/favicon.svg" type="image/svg+xml" />
         </Head>
         <body>
           <Main />
