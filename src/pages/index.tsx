@@ -14,7 +14,6 @@ import { useLanguage } from "@/hooks/useLanguage";
 const SUBTITLE_EN = 'Full Stack Developer';
 const SUBTITLE_PT = 'Desenvolvedor Full Stack';
 
-
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
   const [drawer, setDrawer] = useState<boolean>(false);
