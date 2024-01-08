@@ -102,7 +102,7 @@ export function Main() {
   return(
     <main 
       id="about" 
-      className={classNames("w-full min-h-[calc(100vh-80px)] flex", {
+      className={classNames("pt-20 w-full min-h-[calc(100vh-80px)] flex", {
         "bg-purple-dark": theme === 'dark',
         "bg-white": theme === 'light',
         "flex-row": !downBreakPoint,

@@ -57,9 +57,9 @@ export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
 
   return(
     <header 
-      className={classNames("w-full h-20 border-solid border-b-2 flex flex-row justify-between items-center px-8 md:px-20", {
+      className={classNames("fixed w-full h-20 bg-purple-dark border-solid border-b-2 flex flex-row justify-between items-center px-8 md:px-20 z-50 bg-opacity-30 backdrop-blur-md", {
         "border-purple-900 bg-purple-dark": theme === 'dark',
-        "border-[#e9eded] bg-white": theme === 'light'
+        "border-[#e9eded] bg-white": theme === 'light',
       })}
     >
       <Logo 
