@@ -8,6 +8,9 @@ import { z } from "zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "./ui/input";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
+import { Textarea } from "./ui/textarea";
+import { cn } from "@/utils/cn";
 
 const formSchema = z.object({
   name: z.string().min(3, {
@@ -68,18 +71,80 @@ export function Contact() {
           className="w-full flex flex-col items-center gap-8"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <Input
-            placeholder={selectedLanguage === 'en' ? "Name" : "Nome"}
-            className={fieldClasses}
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    type="text"
+                    className={fieldClasses}
+                    placeholder={selectedLanguage === 'en' ? "Name" : "Nome"}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage 
+                  className={
+                    cn({
+                      "text-white": theme === 'dark',
+                      "text-purple-900": theme === 'light'
+                    })
+                  }
+                />
+              </FormItem>
+            )}
           />
-          <Input 
-            placeholder="Email"
-            className={fieldClasses}
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    type="text"
+                    className={fieldClasses}
+                    placeholder="Email"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage 
+                  className={
+                    cn({
+                      "text-white": theme === 'dark',
+                      "text-purple-900": theme === 'light'
+                    })
+                  }
+                />
+              </FormItem>
+            )}
           />
-          <TextArea 
-            placeholder={selectedLanguage === 'en' ? "Message" : "Mensagem"}
-            extraClasses={fieldClasses}
+
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Textarea
+                    className={fieldClasses}
+                    placeholder={selectedLanguage === 'en' ? "Message" : "Mensagem"}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage 
+                  className={
+                    cn({
+                      "text-white": theme === 'dark',
+                      "text-purple-900": theme === 'light'
+                    })
+                  }
+                />
+              </FormItem>
+            )}
           />
+
           <button 
             className="h-12 w-[90%] md:w-96 rounded-[8px] bg-[#0DA2E7] text-white transition-colors hover:opacity-90"
             type="submit" 
