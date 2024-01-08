@@ -1,4 +1,4 @@
-import { useState, useRef, HTMLAttributes } from 'react';
+import { useState, useRef, useMemo, HTMLAttributes } from 'react';
 
 import { BsArrowRight } from "react-icons/bs";
 import { AiOutlineLink } from "react-icons/ai"
@@ -68,7 +68,7 @@ function CardProject(props: ProjectProps) {
         alt={props.title}
         className="rounded-[8px]"
       />
-      <main className="w-full h-[152px] flex flex-col px-2 mt-2 overflow-y-scroll">
+      <main className="scrollable-container w-full h-[152px] flex flex-col px-2 mt-2 overflow-y-scroll">
         <h2 className="text-2xl font-inter font-bold text-[#ffffff]">{props.title}</h2>
         <p className="text-base font-inter font-normal text-white">
           {props.description}
@@ -88,7 +88,13 @@ export function Projects() {
   const [categorySelected, setCategorySelected] = useState<string>('All projects');
   const { theme } = useTheme();
   const { selectedLanguage } = useLanguage();
-  const projectsByCategory = projects.filter(project => project.categories.includes(categorySelected));
+
+  const projectsByCategory = useMemo(() => {
+    return projects.filter(project => project.categories.includes(categorySelected));
+  }, [categorySelected])  
+
+  console.log(categorySelected);
+  console.log(projectsByCategory);
 
   return(
     <div 

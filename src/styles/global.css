@@ -21,6 +21,15 @@ html, body {
   @apply h-screen w-screen bg-purple-dark overflow-x-hidden
 }
 
+.scrollable-container::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+
 .button-curriculum {
   box-shadow: 0 0 101px 0 rgba(40,206,124,0.5);
 }

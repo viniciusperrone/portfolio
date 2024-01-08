@@ -73,8 +73,6 @@ function LanguageProvider({ children }: ProviderProps) {
     }
   }, []);
 
-  console.log('language', selectedLanguage);
-
   return(
     <LanguageContext.Provider
       value={{
