@@ -74,7 +74,7 @@ export const projects = [
     }
   },
   {
-    id: 1,
+    id: 2,
     title: 'FoodFast',
     description: {
       pt: `
@@ -97,7 +97,7 @@ export const projects = [
     }
   },
   {
-    id: 2,
+    id: 3,
     title: 'SalesStore',
     description: { 
       pt: `
@@ -110,7 +110,7 @@ export const projects = [
       `
     },
     image: "images/salesstore.svg",
-    categories: ['All projects', 'React.js'],
+    categories: ['All projects', 'Node.js'],
     year: '2022',
     href: 'https://github.com/viniciusperrone/SalesStore',
     icon: <AiFillGithub size={22} color="#FFFFFF"/>,
@@ -121,7 +121,7 @@ export const projects = [
     }
   },
   {
-    id: 2,
+    id: 4,
     title: 'Ignite Lab',
     description: { 
       pt: `
@@ -159,7 +159,7 @@ export const projects = [
     }
   },
   {
-    id: 3,
+    id: 5,
     title: 'Rocket Help',
     description: {
       pt: `
