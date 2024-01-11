@@ -17,10 +17,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-BR">
         <Head>
-          <meta property="og:description" content={description} />
-          <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/portfolio-18889.appspot.com/o/Preview.png" />
-          <link rel="icon" href="/favicon.svg" />
           <meta property="og:title" content="Vinicius Perrone | Desenvolvedor Full Stack" />
+          <meta property="og:description" content={description} />
+          <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/portfolio-18889.appspot.com/o/Preview.png?alt=media&token=ea57934c-e13d-4308-9129-727f7ccadbe1" />
+          <link rel="icon" href="/favicon.svg" />
           <meta name="keywords" content="vinicius perrone, vinicius developer, vinicius desenvolvedor" />
           <Link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
           <Script defer src="https://pyscript.net/latest/pyscript.js"></Script>
