@@ -19,7 +19,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta property="og:title" content="Vinicius Perrone | Desenvolvedor Full Stack" />
           <meta property="og:description" content={description} />
-          <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/portfolio-18889.appspot.com/o/Preview.png?alt=media&token=ea57934c-e13d-4308-9129-727f7ccadbe1" />
+          <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/portfolio-18889.appspot.com/o/Preview.svg?alt=media&token=e44f9be4-d70e-46e3-8d33-a4dff48b655d" />
           <link rel="icon" href="/favicon.svg" />
           <meta name="keywords" content="vinicius perrone, vinicius developer, vinicius desenvolvedor" />
           <Link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
