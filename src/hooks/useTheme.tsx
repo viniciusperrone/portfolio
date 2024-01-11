@@ -61,8 +61,6 @@ function ThemeProvider({ children }: ProviderProps) {
     }
   }, []);
 
-  console.log("theme", theme);
-
   return(
     <ThemeContext.Provider
       value={{

@@ -1,5 +1,4 @@
-import Head from "next/head";
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Header } from "../components/Header";
 import { LoadingPage } from "../components/Loading";
 import { Main } from "../components/Main";
@@ -11,16 +10,23 @@ import { FavButton } from "@/components/FavButton";
 import { Drawer } from "@/components/Drawer";
 import { useLanguage } from "@/hooks/useLanguage";
 
-const SUBTITLE_EN = 'Full Stack Developer';
-const SUBTITLE_PT = 'Desenvolvedor Full Stack';
-
-
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
   const [drawer, setDrawer] = useState<boolean>(false);
   const { selectedLanguage } = useLanguage();
 
-  const secondTitle = selectedLanguage === 'en' ? SUBTITLE_EN : SUBTITLE_PT;
+  useEffect(() => {
+    if (!document) return;
+
+    if(selectedLanguage === 'pt') {
+      document.title = 'Vinicius Perrone | Desenvolvedor Full Stack';
+
+      return;
+    }
+
+    document.title = 'Vinicius Perrone | Full Stack Developer';
+
+  }, [selectedLanguage]);
 
   useEffect(() => {
     setLoading(true);
@@ -30,10 +36,7 @@ export default function Home() {
   }, []);
     
   return(
-    <>
-      <Head>
-        <title>Vinicius Perrone | {secondTitle}</title>
-      </Head>
+    <Fragment>
       { loading && <LoadingPage /> }
       {
         !loading && (
@@ -49,6 +52,6 @@ export default function Home() {
           </>
         )
       }
-    </>
+    </Fragment>
   )
 }

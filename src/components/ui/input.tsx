@@ -10,7 +10,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         type={type}
         className={cn(
-          "h-10 w-[90%] md:w-96 rounded-[8px] px-4 placeholder:text-[#94A3B8]",
+          "h-10 w-[90vw] md:w-96 rounded-[8px] px-4 placeholder:text-[#94A3B8]",
           className
         )}
         {...props}

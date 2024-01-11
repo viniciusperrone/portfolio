@@ -43,7 +43,7 @@ export function Footer() {
       })}
     >
       <p className="text-sm font-inter font-normal text-[#94A3B8] break-all">
-        © 2023 Vinicius Perrone, {selectedLanguage === 'en' ? 'All rights reserved.' : 'Todos os direitos reservados.'}
+        © 2024 Vinicius Perrone, {selectedLanguage === 'en' ? 'All rights reserved.' : 'Todos os direitos reservados.'}
       </p>
       <ol className="flex flex-row gap-4 items-center">
         {
