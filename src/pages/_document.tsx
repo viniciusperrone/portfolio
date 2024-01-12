@@ -3,14 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
 import Link from 'next/link';
 
-const description = `
-  👋 Olá, meu nome é Vinicius. Sou apaixonado por 
-  tecnologias e por músicas. Desenvolvo sistemas
-  para desktop e mobile, sempre estou aberto a 
-  aprender coisas novas. Busco sempre desenvolver
-  as melhores soluções, prezando uma boa dinâmica e
-  a flexibilidade nas necessidades dos usuários.
-`;
+const description = `👋 Prazer, sou Vinicius Perrone. Sou apaixonado e estusiasta por tecnologias.`;
 
 export default class MyDocument extends Document {
   render() {
