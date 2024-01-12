@@ -70,6 +70,11 @@ export function Contact() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
 
+    const data = { 
+      ...values, 
+      language: selectedLanguage
+    }
+
     try {
       let feedbackMessage: string = "Sent with success!";
 
@@ -78,7 +83,7 @@ export function Contact() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(data)
       });
 
       if (selectedLanguage === "pt") {
