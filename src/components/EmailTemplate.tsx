@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-
 type EmailTemplateProps = {
   name: string;
   language: 'pt' | 'en';
@@ -10,7 +8,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ name, la
     <div>
       {
         language && 'pt' ? (
-          <Fragment>
+          <div>
             <h1>Olá, {name}!</h1>
             <br />
             <p>
@@ -18,17 +16,17 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ name, la
               <br />
               Whatsapp: +55 92 993041762
             </p>
-          </Fragment>
+          </div>
         ) : (
-          <Fragment>
+          <div>
             <h1>Hello, {name}!</h1>
             <br />
             <p>
-              Thank you for being interested. I'll be in touch soon.
+              Thank you for being interested. I{"'ll"} be in touch soon.
               <br />
               Whatsapp: +55 92 993041762
             </p>
-          </Fragment>
+          </div>
         )
       }
     </div>
