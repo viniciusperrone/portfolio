@@ -16,7 +16,7 @@ const socialMedias = [
   },
   {
     key: 'instagram',
-    href: 'https://www.instagram.com/portfolio.projects/',
+    href: 'http://instagram.com/vinicius.development',
     icon: <AiFillInstagram color="#94A3B8" className="w-[25px] md:w-[20px] h-[25px] md:h-[20px]" />
   },
   {

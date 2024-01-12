@@ -8,7 +8,6 @@ import { DrawerProps as HeaderProps } from "./Drawer";
 import { useLanguage } from "@/hooks/useLanguage";
 import classNames from "classnames";
 import { useTheme } from "@/hooks/useTheme";
-import { FaOpencart } from "react-icons/fa";
 
 const HREF_PT = '/images/brasil-icon.svg';
 const HREF_EN = '/images/estados-unidos-icon.svg';
