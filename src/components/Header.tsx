@@ -8,6 +8,7 @@ import { DrawerProps as HeaderProps } from "./Drawer";
 import { useLanguage } from "@/hooks/useLanguage";
 import classNames from "classnames";
 import { useTheme } from "@/hooks/useTheme";
+import { FaOpencart } from "react-icons/fa";
 
 const HREF_PT = '/images/brasil-icon.svg';
 const HREF_EN = '/images/estados-unidos-icon.svg';
@@ -39,7 +40,7 @@ const listButtons = [
   }
 ];
 
-export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
+export function Header({ open, onOpen }: Omit<HeaderProps, 'onClose'>) {
   const { selectedLanguage, onChangeLanguage } = useLanguage();
   const { theme } = useTheme();
 
@@ -58,10 +59,11 @@ export function Header({ onOpen }: Omit<HeaderProps, 'onClose' | 'open'>) {
 
   return(
     <header 
-    className={classNames("fixed w-full h-20 bg-purple-dark border-solid border-b-2 flex flex-row justify-between items-center px-8 md:px-20 z-10 bg-opacity-30 backdrop-blur-md", {
+    className={classNames("w-full h-20 bg-purple-dark border-solid border-b-2 flex flex-row justify-between items-center px-8 md:px-20 bg-opacity-30 backdrop-blur-md", {
         "border-purple-900 bg-purple-dark": theme === 'dark',
         "border-[#e9eded] bg-white": theme === 'light',
         "lg:w-[calc(100vw-18px)]": !isMacOs,
+        "fixed z-10": !open
       })}
     >
       <Logo 

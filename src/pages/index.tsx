@@ -42,7 +42,10 @@ export default function Home() {
         !loading && (
           <>
             <Drawer open={drawer} onClose={() => setDrawer(false)}/>
-            <Header onOpen={() => setDrawer(true)}/>
+            <Header
+              open={drawer}
+              onOpen={() => setDrawer(true)}
+            />
             <Main />
             <Skills />
             <Projects />
