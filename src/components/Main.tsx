@@ -2,6 +2,8 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import classNames from "classnames";
 import Typical from 'react-typical';
+import { useMediaQuery } from "react-responsive";
+
 
 import { Code } from "./Code";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -75,29 +77,15 @@ function TitleHighlighted({ extraClasses, downBreakPoint }: any) {
 export function Main() {
   const { selectedLanguage } = useLanguage();
   const { theme } = useTheme();
-  const [downBreakPoint, setDownBreakPoint] = useState<boolean>(false);
+  const downBreakPoint = useMediaQuery({
+    query: '(max-width: 985px)'
+  });
 
   let description;
 
   if(selectedLanguage === 'en') description = descriptionInEnglish;
+
   else description = descriptionInPortuguese;
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 985) {
-        setDownBreakPoint(true);
-      } else {
-        setDownBreakPoint(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
 
   return(
     <main 
