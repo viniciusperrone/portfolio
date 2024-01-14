@@ -1,4 +1,5 @@
-import { EmailTemplate } from '@/components/EmailTemplate';
+import { FeedbackEmail } from '@/components/email/Feedback';
+import { LeadEmail } from '@/components/email/Lead';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Resend } from 'resend';
 
@@ -8,15 +9,16 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
   const { name, email, message, language } = await req.body;
 
   try {
-    const htmlTemplate = `
-      <p>Email: ${email}</p><br><p>Message: ${message}</p>
-    `;
-
     await resend.emails.send({
-      from: 'Nova Lead | <onboarding@resend.dev>',
+      from: 'Nova Lead <onboarding@resend.dev>',
       to: ['perronevinicius2018@gmail.com'],
       subject: `Lead | ${name}`,
-      html: htmlTemplate
+      react: LeadEmail({ 
+        name, 
+        email, 
+        message, 
+        language 
+      })
     });
 
     await resend.emails.send({
@@ -24,7 +26,7 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
       to: [email],
       subject: `Feedback | ${name}`,
       text: '',
-      react: EmailTemplate({ name, language })
+      react: FeedbackEmail({ name, language })
     });
 
     res.status(200).json({ message: 'Email successfully sent!' });
