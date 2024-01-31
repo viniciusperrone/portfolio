@@ -1,7 +1,7 @@
-import { FeedbackEmail } from '@/components/email/Feedback';
-import { LeadEmail } from '@/components/email/Lead';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Resend } from 'resend';
+import { FeedbackEmail } from '@/components/email/Feedback';
+import { LeadEmail } from '@/components/email/Lead';
 
 const resend = new Resend(process.env.RESEND_API);
 
